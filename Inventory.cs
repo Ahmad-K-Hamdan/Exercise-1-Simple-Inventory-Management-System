@@ -5,11 +5,13 @@
     public void AddProduct(Product product)
     {
         Products.Add(product);
-        Console.WriteLine("Successfully added the product.");
+        Console.WriteLine($"Successfully added {product.Name} to the inventory.");
     }
 
     public void ListAllProducts()
     {
+        if (Products.Count == 0)
+            Console.WriteLine("The inventory is empty.");
         foreach (Product product in Products)
             Console.WriteLine(product.ToString());
     }
@@ -36,6 +38,18 @@
         var product = FindProductByName(productName);
         if (product != null)
             Console.WriteLine(product.ToString());
+        else
+            Console.WriteLine("The desired product was not found.");
+    }
+
+    public void RemoveProduct(string productName)
+    {
+        var product = FindProductByName(productName);
+        if (product != null)
+        {
+            Products.Remove(product);
+            Console.WriteLine($"Successfully removed {product.Name} from the inventory.");
+        }
         else
             Console.WriteLine("The desired product was not found.");
     }

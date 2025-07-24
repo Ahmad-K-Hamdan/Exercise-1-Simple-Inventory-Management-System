@@ -12,10 +12,15 @@
         myInv.ListAllProducts();
         Console.WriteLine("\n");
 
-        myInv.EditProduct("apples");
+        myInv.RemoveProduct("apples");
+        Console.WriteLine("...........");
+        myInv.ListAllProducts();
+        Console.WriteLine("...........");
+        myInv.RemoveProduct("apples");
+        Console.WriteLine("...........");
+        myInv.RemoveProduct("bananas");
+        Console.WriteLine("...........");
 
         myInv.ListAllProducts();
-
-        myInv.SearchForProduct("Ahmad");
     }
 }
