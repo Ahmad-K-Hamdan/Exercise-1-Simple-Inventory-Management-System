@@ -50,7 +50,8 @@
         if (product != null)
             Console.WriteLine(product.ToString());
         else
-            Console.WriteLine("The desired product was not found.\n");
+            Console.WriteLine("The desired product was not found.");
+        Console.WriteLine();
     }
 
     public void RemoveProduct(string productName)

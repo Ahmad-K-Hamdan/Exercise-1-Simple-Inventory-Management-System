@@ -25,7 +25,7 @@ class Program
                     inventory.ListAllProducts();
                     break;
                 case 3:
-                    Console.Write("Enter the name of the product: ");
+                    Console.Write("Enter the name of the product to edit: ");
                     productName = Console.ReadLine();
                     inventory.EditProduct(productName);
                     break;
@@ -35,6 +35,9 @@ class Program
                     inventory.RemoveProduct(productName);
                     break;
                 case 5:
+                    Console.Write("Enter the name of the product to search for: ");
+                    productName = Console.ReadLine();
+                    inventory.SearchForProduct(productName);
                     break;
                 case 6:
                     Console.WriteLine("Thank you for using our system.");
