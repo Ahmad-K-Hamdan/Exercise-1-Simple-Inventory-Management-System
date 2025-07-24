@@ -15,5 +15,7 @@
         myInv.EditProduct("apples");
 
         myInv.ListAllProducts();
+
+        myInv.SearchForProduct("Ahmad");
     }
 }

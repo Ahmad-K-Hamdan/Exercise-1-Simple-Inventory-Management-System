@@ -30,4 +30,13 @@
         else
             Console.WriteLine("The desired product was not found.");
     }
+
+    public void SearchForProduct(string productName)
+    {
+        var product = FindProductByName(productName);
+        if (product != null)
+            Console.WriteLine(product.ToString());
+        else
+            Console.WriteLine("The desired product was not found.");
+    }
 }
