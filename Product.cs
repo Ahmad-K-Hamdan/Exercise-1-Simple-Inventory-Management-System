@@ -91,7 +91,7 @@
             }
             Price = newPrice;
         }
-        if (choice == 3)
+        else if (choice == 3)
         {
             Console.Write("Enter the new quantity for the product: ");
             string inputQuantity = Console.ReadLine();
