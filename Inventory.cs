@@ -5,7 +5,7 @@
     public void AddProduct(Product product)
     {
         Products.Add(product);
-        Console.WriteLine("Sucessfuly added the product.");
+        Console.WriteLine("Successfully added the product.");
     }
 
     public void ListAllProducts()
