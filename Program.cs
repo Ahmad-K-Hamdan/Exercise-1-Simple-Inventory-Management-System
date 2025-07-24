@@ -24,6 +24,9 @@ class Program
                     inventory.ListAllProducts();
                     break;
                 case 3:
+                    Console.Write("Enter the name of the product: ");
+                    string productName = Console.ReadLine();
+                    inventory.EditProduct(productName);
                     break;
                 case 4:
                     break;

@@ -27,20 +27,30 @@
 
     public void EditProduct(string productName)
     {
+        if (Products.Count == 0)
+        {
+            Console.WriteLine("The inventory is empty.\n");
+            return;
+        }
         var product = FindProductByName(productName);
         if (product != null)
             product.Edit();
         else
-            Console.WriteLine("The desired product was not found.");
+            Console.WriteLine("The desired product was not found.\n");
     }
 
     public void SearchForProduct(string productName)
     {
+        if (Products.Count == 0)
+        {
+            Console.WriteLine("The inventory is empty.\n");
+            return;
+        }
         var product = FindProductByName(productName);
         if (product != null)
             Console.WriteLine(product.ToString());
         else
-            Console.WriteLine("The desired product was not found.");
+            Console.WriteLine("The desired product was not found.\n");
     }
 
     public void RemoveProduct(string productName)
@@ -49,9 +59,9 @@
         if (product != null)
         {
             Products.Remove(product);
-            Console.WriteLine($"Successfully removed {product.Name} from the inventory.");
+            Console.WriteLine($"Successfully removed {product.Name} from the inventory.\n");
         }
         else
-            Console.WriteLine("The desired product was not found.");
+            Console.WriteLine("The desired product was not found.\n");
     }
 }

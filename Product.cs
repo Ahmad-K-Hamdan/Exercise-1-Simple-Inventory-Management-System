@@ -63,32 +63,44 @@
         bool canConvert = int.TryParse(inputChoice, out int choice);
         if (!canConvert || (choice > 3 || choice < 1))
         {
-            Console.WriteLine("Invalid Choice.");
+            Console.WriteLine("Invalid Choice.\n");
             return;
         }
 
         try
         {
+            bool edited = false ;
             if (choice == 1)
             {
                 Console.Write("Enter the new name for the product: ");
                 Name = Console.ReadLine();
+                edited = true;
             }
             else if (choice == 2)
             {
                 Console.Write("Enter the new price for the product: ");
                 if (float.TryParse(Console.ReadLine(), out float newPrice))
+                {
                     Price = newPrice;
+                    edited = true;
+                }
                 else
-                    Console.WriteLine("Invalid Price.");
+                    Console.WriteLine("Invalid Price.\n");
             }
             else if (choice == 3)
             {
                 Console.Write("Enter the new quantity for the product: ");
                 if (int.TryParse(Console.ReadLine(), out int newQuantity))
+                {
                     Quantity = newQuantity;
+                    edited = true;
+                }
                 else
-                    Console.WriteLine("Invalid Quantity.");
+                    Console.WriteLine("Invalid Quantity.\n");
+            }
+            if (edited)
+            {
+                Console.WriteLine("Edit successful!\n");
             }
         }
         catch (ArgumentException ex)
