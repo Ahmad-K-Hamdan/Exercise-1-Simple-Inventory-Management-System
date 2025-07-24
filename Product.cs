@@ -13,6 +13,11 @@
         get => _name;
         set
         {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                Console.WriteLine($"Error! Name cannot be null or white space");
+                return;
+            }
             value = value.Trim();
             if (value.All(Char.IsLetter))
                 _name = value;
@@ -52,5 +57,51 @@
     public override string ToString()
     {
         return "Name = " + Name + ", Price = " + Price + ", Quantity = " + Quantity;
+    }
+
+    public void Edit()
+    {
+        Console.WriteLine("What would you like to edit?");
+        Console.WriteLine("1. Product's Name");
+        Console.WriteLine("2. Product's Price");
+        Console.WriteLine("3. Product's Quantity");
+        string inputChoice = Console.ReadLine();
+        bool canConvert = int.TryParse(inputChoice, out int choice);
+        if (!canConvert || (choice > 3 || choice < 1))
+        {
+            Console.WriteLine("Invalid Choice.");
+            return;
+        }
+
+        if (choice == 1)
+        {
+            Console.Write("Enter the new name for the product: ");
+            string newName = Console.ReadLine();
+            Name = newName;
+        }
+        else if (choice == 2)
+        {
+            Console.Write("Enter the new price for the product: ");
+            string inputPrice = Console.ReadLine();
+            canConvert = float.TryParse(inputPrice, out float newPrice);
+            if (!canConvert)
+            {
+                Console.WriteLine("Invalid Price.");
+                return;
+            }
+            Price = newPrice;
+        }
+        if (choice == 3)
+        {
+            Console.Write("Enter the new quantity for the product: ");
+            string inputQuantity = Console.ReadLine();
+            canConvert = int.TryParse(inputQuantity, out int newQuantity);
+            if (!canConvert)
+            {
+                Console.WriteLine("Invalid Quantity.");
+                return;
+            }
+            Quantity = newQuantity;
+        }
     }
 }
