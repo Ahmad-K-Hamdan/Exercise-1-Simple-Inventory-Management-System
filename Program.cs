@@ -8,6 +8,10 @@
         Inventory myInv = new Inventory();
 
         myInv.AddProduct(myProduct);
+        myInv.ListAllProducts();
+        Console.WriteLine("\n");
+        
         myInv.AddProduct(myProduct2);
+        myInv.ListAllProducts();
     }
 }
