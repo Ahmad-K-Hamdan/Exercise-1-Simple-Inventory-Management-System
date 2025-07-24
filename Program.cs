@@ -14,6 +14,7 @@ class Program
         while (true)
         {
             option = MainMenu();
+            string productName;
             switch (option)
             {
                 case 1:
@@ -25,10 +26,13 @@ class Program
                     break;
                 case 3:
                     Console.Write("Enter the name of the product: ");
-                    string productName = Console.ReadLine();
+                    productName = Console.ReadLine();
                     inventory.EditProduct(productName);
                     break;
                 case 4:
+                    Console.Write("Enter the name of the product to delete: ");
+                    productName = Console.ReadLine();
+                    inventory.RemoveProduct(productName);
                     break;
                 case 5:
                     break;

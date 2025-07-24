@@ -55,6 +55,11 @@
 
     public void RemoveProduct(string productName)
     {
+        if (Products.Count == 0)
+        {
+            Console.WriteLine("The inventory is empty.\n");
+            return;
+        }
         var product = FindProductByName(productName);
         if (product != null)
         {
