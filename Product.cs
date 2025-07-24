@@ -14,15 +14,11 @@
         set
         {
             if (string.IsNullOrWhiteSpace(value))
-            {
-                Console.WriteLine($"Error! Name cannot be null or white space");
-                return;
-            }
+                throw new ArgumentException("Name cannot be null or white space");
             value = value.Trim();
-            if (value.All(Char.IsLetter))
-                _name = value;
-            else
-                Console.WriteLine($"Error! Input: {value}. Name can only contain characters");
+            if (!value.All(char.IsLetter))
+                throw new ArgumentException("Name can only contain letters");
+            _name = value;
         }
     }
 
@@ -33,10 +29,9 @@
         get => _price;
         set
         {
-            if (value > 0)
-                _price = value;
-            else
-                Console.WriteLine($"Error! Input: {value}. Price cannot be non-positive");
+            if (value <= 0)
+                throw new ArgumentException("Price cannot be non-positive");
+            _price = value;
         }
     }
 
@@ -47,10 +42,9 @@
         get => _quantity;
         set
         {
-            if (value >= 0)
-                _quantity = value;
-            else
-                Console.WriteLine($"Error! Input: {value}. Quantity cannot be negative");
+            if (value < 0)
+                throw new ArgumentException("Quantity cannot be negative");
+            _quantity = value;
         }
     }
 
@@ -73,35 +67,33 @@
             return;
         }
 
-        if (choice == 1)
+        try
         {
-            Console.Write("Enter the new name for the product: ");
-            string newName = Console.ReadLine();
-            Name = newName;
-        }
-        else if (choice == 2)
-        {
-            Console.Write("Enter the new price for the product: ");
-            string inputPrice = Console.ReadLine();
-            canConvert = float.TryParse(inputPrice, out float newPrice);
-            if (!canConvert)
+            if (choice == 1)
             {
-                Console.WriteLine("Invalid Price.");
-                return;
+                Console.Write("Enter the new name for the product: ");
+                Name = Console.ReadLine();
             }
-            Price = newPrice;
-        }
-        else if (choice == 3)
-        {
-            Console.Write("Enter the new quantity for the product: ");
-            string inputQuantity = Console.ReadLine();
-            canConvert = int.TryParse(inputQuantity, out int newQuantity);
-            if (!canConvert)
+            else if (choice == 2)
             {
-                Console.WriteLine("Invalid Quantity.");
-                return;
+                Console.Write("Enter the new price for the product: ");
+                if (float.TryParse(Console.ReadLine(), out float newPrice))
+                    Price = newPrice;
+                else
+                    Console.WriteLine("Invalid Price.");
             }
-            Quantity = newQuantity;
+            else if (choice == 3)
+            {
+                Console.Write("Enter the new quantity for the product: ");
+                if (int.TryParse(Console.ReadLine(), out int newQuantity))
+                    Quantity = newQuantity;
+                else
+                    Console.WriteLine("Invalid Quantity.");
+            }
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
         }
     }
 }

@@ -5,7 +5,7 @@
     public void AddProduct(Product product)
     {
         Products.Add(product);
-        Console.WriteLine($"Successfully added {product.Name} to the inventory.");
+        Console.WriteLine($"Successfully added {product.Name} to the inventory.\n");
     }
 
     public void ListAllProducts()
@@ -14,6 +14,7 @@
             Console.WriteLine("The inventory is empty.");
         foreach (Product product in Products)
             Console.WriteLine(product.ToString());
+        Console.WriteLine();
     }
 
     public Product? FindProductByName(string productName)
