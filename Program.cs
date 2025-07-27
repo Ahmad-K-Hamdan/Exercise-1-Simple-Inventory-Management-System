@@ -91,11 +91,15 @@ class Program
 
                 Console.Write("Enter the price of the product: ");
                 if (!float.TryParse(Console.ReadLine(), out float productPrice))
+                {
                     throw new ArgumentException("Invalid price input.");
+                }
 
                 Console.Write("Enter the quantity of the product: ");
                 if (!int.TryParse(Console.ReadLine(), out int productQuantity))
+                {
                     throw new ArgumentException("Invalid quantity input.");
+                }
 
                 return new Product(productName, productPrice, productQuantity);
             }

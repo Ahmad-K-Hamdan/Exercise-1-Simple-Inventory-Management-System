@@ -14,10 +14,14 @@
         set
         {
             if (string.IsNullOrWhiteSpace(value))
+            {
                 throw new ArgumentException("Name cannot be null or white space");
+            }
             value = value.Trim();
             if (!value.All(char.IsLetter))
+            {
                 throw new ArgumentException("Name can only contain letters");
+            }
             _name = value;
         }
     }
@@ -30,7 +34,9 @@
         set
         {
             if (value <= 0)
+            {
                 throw new ArgumentException("Price cannot be non-positive");
+            }
             _price = value;
         }
     }
@@ -43,7 +49,9 @@
         set
         {
             if (value < 0)
+            {
                 throw new ArgumentException("Quantity cannot be negative");
+            }
             _quantity = value;
         }
     }
@@ -69,7 +77,7 @@
 
         try
         {
-            bool edited = false ;
+            bool edited = false;
             if (choice == 1)
             {
                 Console.Write("Enter the new name for the product: ");
@@ -85,7 +93,9 @@
                     edited = true;
                 }
                 else
+                {
                     Console.WriteLine("Invalid Price.\n");
+                }
             }
             else if (choice == 3)
             {
@@ -96,7 +106,9 @@
                     edited = true;
                 }
                 else
+                {
                     Console.WriteLine("Invalid Quantity.\n");
+                }
             }
             if (edited)
             {
