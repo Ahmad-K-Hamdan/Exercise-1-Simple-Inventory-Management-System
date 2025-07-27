@@ -43,14 +43,12 @@
             return;
         }
         var product = FindProductByName(productName);
-        if (product != null)
-        {
-            product.Edit();
-        }
-        else
+        if (product is null)
         {
             Console.WriteLine("The desired product was not found.\n");
+            return;
         }
+        product.Edit();
     }
 
     public void SearchForProduct(string productName)
@@ -60,14 +58,12 @@
             return;
         }
         var product = FindProductByName(productName);
-        if (product != null)
+        if (product is null)
         {
-            Console.WriteLine(product.ToString());
+            Console.WriteLine("The desired product was not found.\n");
+            return;
         }
-        else
-        {
-            Console.WriteLine("The desired product was not found.");
-        }
+        Console.WriteLine(product.ToString());
         Console.WriteLine();
     }
 
@@ -78,14 +74,12 @@
             return;
         }
         var product = FindProductByName(productName);
-        if (product != null)
-        {
-            Products.Remove(product);
-            Console.WriteLine($"Successfully removed {product.Name} from the inventory.\n");
-        }
-        else
+        if (product is null)
         {
             Console.WriteLine("The desired product was not found.\n");
+            return;
         }
+        Products.Remove(product);
+        Console.WriteLine($"Successfully removed {product.Name} from the inventory.\n");
     }
 }
