@@ -18,7 +18,7 @@ class Program
             switch (option)
             {
                 case 1:
-                    var product = CreateProduct();
+                    var product = Inventory.CreateProduct();
                     inventory.AddProduct(product);
                     break;
                 case 2:
@@ -49,7 +49,6 @@ class Program
                     break;
             }
         }
-
     }
 
     private static int MainMenu()
@@ -69,43 +68,14 @@ class Program
             Console.Write("Please choose an option: ");
 
             string inputChoice = Console.ReadLine();
+            canConvert = int.TryParse(inputChoice, out choice);
 
-            if (!int.TryParse(inputChoice, out choice) || choice is < 1 or > 6)
+            if (!canConvert || choice is < 1 or > 6)
             {
                 Console.WriteLine("Invalid Choice.\n");
             }
         }
 
         return choice;
-    }
-
-    private static Product CreateProduct()
-    {
-        while (true)
-        {
-            try
-            {
-                Console.Write("Enter the name of the product: ");
-                string productName = Console.ReadLine();
-
-                Console.Write("Enter the price of the product: ");
-                if (!float.TryParse(Console.ReadLine(), out float productPrice))
-                {
-                    throw new ArgumentException("Invalid price input.");
-                }
-
-                Console.Write("Enter the quantity of the product: ");
-                if (!int.TryParse(Console.ReadLine(), out int productQuantity))
-                {
-                    throw new ArgumentException("Invalid quantity input.");
-                }
-
-                return new Product(productName, productPrice, productQuantity);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}\nPlease try again.\n");
-            }
-        }
     }
 }
