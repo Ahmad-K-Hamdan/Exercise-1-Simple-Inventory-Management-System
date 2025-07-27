@@ -69,9 +69,8 @@ class Program
             Console.Write("Please choose an option: ");
 
             string inputChoice = Console.ReadLine();
-            canConvert = int.TryParse(inputChoice, out choice);
 
-            if (!canConvert || choice < 1 || choice > 6)
+            if (!int.TryParse(inputChoice, out choice) || choice is < 1 or > 6)
             {
                 Console.WriteLine("Invalid Choice.\n");
             }

@@ -59,8 +59,7 @@
         Console.WriteLine("3. Product's Quantity");
 
         string inputChoice = Console.ReadLine();
-        bool canConvert = int.TryParse(inputChoice, out int choice);
-        if (!canConvert || (choice > 3 || choice < 1))
+        if (!int.TryParse(inputChoice, out int choice) || choice is < 1 or > 3)
         {
             Console.WriteLine("Invalid Choice.\n");
             return;
