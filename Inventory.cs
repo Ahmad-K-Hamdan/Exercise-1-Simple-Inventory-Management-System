@@ -1,6 +1,6 @@
 ﻿class Inventory
 {
-    public List<Product> Products { get; } = [];
+    public List<Product> Products { get; } = new ();
 
     public void AddProduct(Product product)
     {
@@ -12,14 +12,14 @@
     {
         if (Products.Count == 0)
             Console.WriteLine("The inventory is empty.");
-        foreach (Product product in Products)
+        foreach (var product in Products)
             Console.WriteLine(product.ToString());
         Console.WriteLine();
     }
 
     public Product? FindProductByName(string productName)
     {
-        foreach (Product product in Products)
+        foreach (var product in Products)
             if (productName.Equals(product.Name))
                 return product;
         return null;
