@@ -48,7 +48,68 @@
             Console.WriteLine("The desired product was not found.\n");
             return;
         }
-        product.Edit();
+        EditProductDetails(product);
+    }
+
+    private void EditProductDetails(Product product)
+    {
+        Console.WriteLine("What would you like to edit?");
+        Console.WriteLine("1. Product's Name");
+        Console.WriteLine("2. Product's Price");
+        Console.WriteLine("3. Product's Quantity");
+
+        string inputChoice = Console.ReadLine();
+        bool canConvert = int.TryParse(inputChoice, out int choice);
+        if (!canConvert || (choice > 3 || choice < 1))
+        {
+            Console.WriteLine("Invalid Choice.\n");
+            return;
+        }
+
+        try
+        {
+            bool edited = false;
+            if (choice == 1)
+            {
+                Console.Write("Enter the new name for the product: ");
+                product.Name = Console.ReadLine();
+                edited = true;
+            }
+            else if (choice == 2)
+            {
+                Console.Write("Enter the new price for the product: ");
+                if (float.TryParse(Console.ReadLine(), out float newPrice))
+                {
+                    product.Price = newPrice;
+                    edited = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Price.\n");
+                }
+            }
+            else if (choice == 3)
+            {
+                Console.Write("Enter the new quantity for the product: ");
+                if (int.TryParse(Console.ReadLine(), out int newQuantity))
+                {
+                    product.Quantity = newQuantity;
+                    edited = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Quantity.\n");
+                }
+            }
+            if (edited)
+            {
+                Console.WriteLine("Edit successful!\n");
+            }
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 
     public void SearchForProduct(string productName)
