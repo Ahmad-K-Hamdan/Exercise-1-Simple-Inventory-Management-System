@@ -68,38 +68,44 @@
         try
         {
             bool edited = false;
-            if (choice == 1)
+            switch (choice)
             {
-                Console.Write("Enter the new name for the product: ");
-                product.Name = Console.ReadLine();
-                edited = true;
-            }
-            else if (choice == 2)
-            {
-                Console.Write("Enter the new price for the product: ");
-                if (float.TryParse(Console.ReadLine(), out float newPrice))
-                {
-                    product.Price = newPrice;
+                case 1:
+                    Console.Write("Enter the new name for the product: ");
+                    product.Name = Console.ReadLine();
                     edited = true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Price.\n");
-                }
+                    break;
+
+                case 2:
+                    Console.Write("Enter the new price for the product: ");
+                    if (float.TryParse(Console.ReadLine(), out float newPrice))
+                    {
+                        product.Price = newPrice;
+                        edited = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Price.\n");
+                    }
+                    break;
+
+                case 3:
+                    Console.Write("Enter the new quantity for the product: ");
+                    if (int.TryParse(Console.ReadLine(), out int newQuantity))
+                    {
+                        product.Quantity = newQuantity;
+                        edited = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Quantity.\n");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid Choice.\n");
+                    break;
             }
-            else if (choice == 3)
-            {
-                Console.Write("Enter the new quantity for the product: ");
-                if (int.TryParse(Console.ReadLine(), out int newQuantity))
-                {
-                    product.Quantity = newQuantity;
-                    edited = true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Quantity.\n");
-                }
-            }
+
             if (edited)
             {
                 Console.WriteLine("Edit successful!\n");
