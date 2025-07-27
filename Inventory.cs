@@ -1,6 +1,6 @@
 ﻿class Inventory
 {
-    public List<Product> Products { get; } = new();
+    private List<Product> Products { get; } = new();
 
     private bool IsInventoryEmpty()
     {
