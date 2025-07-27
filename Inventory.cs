@@ -1,6 +1,6 @@
 ﻿class Inventory
 {
-    public List<Product> Products { get; } = new ();
+    public List<Product> Products { get; } = new();
 
     public void AddProduct(Product product)
     {
