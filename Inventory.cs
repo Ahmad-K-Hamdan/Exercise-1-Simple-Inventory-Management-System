@@ -2,6 +2,16 @@
 {
     public List<Product> Products { get; } = new();
 
+    private bool IsInventoryEmpty()
+    {
+        if (Products.Count == 0)
+        {
+            Console.WriteLine("The inventory is empty.\n");
+            return true;
+        }
+        return false;
+    }
+
     public void AddProduct(Product product)
     {
         Products.Add(product);
@@ -10,10 +20,7 @@
 
     public void ListAllProducts()
     {
-        if (Products.Count == 0)
-        {
-            Console.WriteLine("The inventory is empty.");
-        }
+        IsInventoryEmpty();
         foreach (var product in Products)
             Console.WriteLine(product.ToString());
         Console.WriteLine();
@@ -31,9 +38,8 @@
 
     public void EditProduct(string productName)
     {
-        if (Products.Count == 0)
+        if (IsInventoryEmpty())
         {
-            Console.WriteLine("The inventory is empty.\n");
             return;
         }
         var product = FindProductByName(productName);
@@ -49,9 +55,8 @@
 
     public void SearchForProduct(string productName)
     {
-        if (Products.Count == 0)
+        if (IsInventoryEmpty())
         {
-            Console.WriteLine("The inventory is empty.\n");
             return;
         }
         var product = FindProductByName(productName);
@@ -68,9 +73,8 @@
 
     public void RemoveProduct(string productName)
     {
-        if (Products.Count == 0)
+        if (IsInventoryEmpty())
         {
-            Console.WriteLine("The inventory is empty.\n");
             return;
         }
         var product = FindProductByName(productName);
