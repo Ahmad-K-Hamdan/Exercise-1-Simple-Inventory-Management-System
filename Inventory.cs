@@ -58,7 +58,7 @@
         Console.WriteLine("2. Product's Price");
         Console.WriteLine("3. Product's Quantity");
 
-        string inputChoice = Console.ReadLine();
+        var inputChoice = Console.ReadLine();
         if (!int.TryParse(inputChoice, out int choice) || choice is < 1 or > 3)
         {
             Console.WriteLine("Invalid Choice.\n");
@@ -67,7 +67,7 @@
 
         try
         {
-            bool edited = false;
+            var edited = false;
             switch (choice)
             {
                 case 1:
@@ -156,7 +156,7 @@
             try
             {
                 Console.Write("Enter the name of the product: ");
-                string productName = Console.ReadLine();
+                var productName = Console.ReadLine();
 
                 Console.Write("Enter the price of the product: ");
                 if (!float.TryParse(Console.ReadLine(), out float productPrice))

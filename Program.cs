@@ -8,7 +8,7 @@ class Program
         Console.WriteLine("\tWelcome to the Simple Inventory Management System.");
         Console.WriteLine("*****************************************************************");
 
-        Inventory inventory = new Inventory();
+        var inventory = new Inventory();
 
         int option;
         while (true)
@@ -53,8 +53,8 @@ class Program
 
     private static int MainMenu()
     {
-        int choice = 0;
-        bool canConvert = false;
+        var choice = 0;
+        var canConvert = false;
 
         while (!canConvert || choice < 1 || choice > 6)
         {
@@ -67,7 +67,7 @@ class Program
             Console.WriteLine("6. Exit");
             Console.Write("Please choose an option: ");
 
-            string inputChoice = Console.ReadLine();
+            var inputChoice = Console.ReadLine();
             canConvert = int.TryParse(inputChoice, out choice);
 
             if (!canConvert || choice is < 1 or > 6)
